@@ -85,7 +85,7 @@ h1, h2 {
 
 #home {
     text-align: center;
-    background-image: url('path/to/automotive-background.jpg');
+    background-image: url('content/images/ak.jpeg');
     background-size: cover;
     background-position: center;
     color: var(--secondary-color);
@@ -97,20 +97,33 @@ h1, h2 {
     margin-bottom: 10px;
 }
 
-#about, #skills, #contact {
+#about, #personality, #skills, #achievements, #contact {
     background-color: var(--secondary-color);
 }
 
-#education {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+#about ul, #personality ul, #skills ul, #achievements ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+#about ul li, #personality ul li, #achievements ul li {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+#about ul li::before, #personality ul li::before, #achievements ul li::before {
+    content: "\2022";
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
 }
 
 #skills ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    list-style-type: none;
 }
 
 #skills ul li {
@@ -119,6 +132,16 @@ h1, h2 {
     padding: 10px 20px;
     margin: 10px;
     border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#skills ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#contact p {
+    margin-bottom: 10px;
 }
 
 footer {
@@ -136,5 +159,9 @@ footer {
 
     nav ul li {
         margin: 10px 0;
+    }
+
+    #skills ul {
+        justify-content: flex-start;
     }
 }

@@ -7,41 +7,6 @@ function updateWorldClock() {
 
 setInterval(updateWorldClock, 1000);
 
-// Education Chart
-const ctx = document.getElementById('educationChart').getContext('2d');
-const educationChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ['PGDM', 'BBA', 'HSC', 'SSC'],
-    datasets: [{
-      label: 'Education Percentage',
-      data: [100, 70.9, 70.8, 84],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.8)',
-        'rgba(54, 162, 235, 0.8)',
-        'rgba(255, 206, 86, 0.8)',
-        'rgba(75, 192, 192, 0.8)'
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)'
-      ],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 100
-      }
-    }
-  }
-});
-
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -71,4 +36,27 @@ const observer = new IntersectionObserver((entries) => {
 
 skillItems.forEach(item => {
   observer.observe(item);
+});
+
+// Add hover effect to skill items
+skillItems.forEach(item => {
+  item.addEventListener('mouseover', () => {
+    item.style.backgroundColor = '#ff4500';
+  });
+  item.addEventListener('mouseout', () => {
+    item.style.backgroundColor = '#000000';
+  });
+});
+
+// Animate location information
+const locationInfo = document.querySelector('#contact p:last-child');
+locationInfo.style.opacity = '0';
+locationInfo.style.transform = 'translateY(20px)';
+locationInfo.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    locationInfo.style.opacity = '1';
+    locationInfo.style.transform = 'translateY(0)';
+  }, 500);
 });
